@@ -1,0 +1,19 @@
+on:
+  workflow_dispatch:
+  push:
+    branches:
+    - main
+
+jobs:
+  build:
+    name: build webkit
+    runs-on: macos-13
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: checkout
+
+      - name: start build
+        run: |
+          ./Tools/Scripts/set-webkit-configuration --release
+          ./Tools/Scripts/build-webkit --release
