@@ -11,8 +11,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - name: checkout
-
+        name: checkout
+        
       - name: start build
         run: |
           ./Tools/Scripts/set-webkit-configuration --release
