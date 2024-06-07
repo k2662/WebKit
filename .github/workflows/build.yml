@@ -16,4 +16,14 @@ jobs:
       - name: start build
         run: |
           ./Tools/Scripts/set-webkit-configuration --release
-          ./Tools/Scripts/build-webkit --release
+          ./Tools/Scripts/build-webkit --lto-mode=full --release
+
+      - name: finish build
+        run: |
+          tar cf Release.tar WebKitBuild
+          zstd Release.tar
+
+      - name: Upload Build
+        uses: actions/upload-artifact@v4.3.3
+        with:
+          path: Release.tar.zstd
